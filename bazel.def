@@ -1,0 +1,25 @@
+# -*- mode: rpm-spec -*-
+Bootstrap: debootstrap
+OSVersion: stable
+MirrorURL: http://ftp.us.debian.org/debian/
+
+Stage: setup
+
+%files
+    bazel-3.1.0-linux-x86_64 /usr/bin
+
+%post
+    ln -s bazel-3.1.0-linux-x86_64 /usr/bin/bazel
+
+%runscript
+    exec bazel "$@"
+
+%test
+    bazel version
+
+%labels
+    Author hpc@uconn.edu
+    Version v3.1.0
+
+%help
+    Bazel build tool in a container with newer glibc for RHEL 6 compatibility.
