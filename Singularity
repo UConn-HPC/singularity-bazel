@@ -3,6 +3,7 @@ Bootstrap: docker
 From: centos:7
 
 %post
+    yum -y install wget
     wget -O /usr/bin/bazel https://github.com/bazelbuild/bazel/releases/download/3.1.0/bazel-3.1.0-linux-x86_64
     chmod +x /usr/bin/bazel
 
